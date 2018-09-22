@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.imageio.ImageIO"/>
+<fullyQualifiedTypeName name="dev.zetabrick.tilegameg.gfx.ImageLoader"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="dev.zetabrick.tilegame.state.State"/>
+<fullyQualifiedTypeName name="dev.zetabrick.tilegame.state.GameState"/>
+<fullyQualifiedTypeName name="dev.zetabrick.tilegame.entity.Entity"/>
+<fullyQualifiedTypeName name="dev.zetabrick.tilegame.Game"/>
+<fullyQualifiedTypeName name="java.awt.event.KeyListener"/>
+<fullyQualifiedTypeName name="dev.zetabrick.tilegame.input.KeyManager"/>
+<fullyQualifiedTypeName name="dev.zetabrick.tilegameg.gfx.Assets"/>
+<fullyQualifiedTypeName name="java.awt.Dimension"/>
+<fullyQualifiedTypeName name="GameObjects.Lives"/>
+<fullyQualifiedTypeName name="GameObjects.WinFlag"/>
+<fullyQualifiedTypeName name="Managers.ObjectId"/>
+<fullyQualifiedTypeName name="Luancher.Game"/>
+<fullyQualifiedTypeName name="java.awt.Canvas"/>
+<fullyQualifiedTypeName name="States.MenuState"/>
+<fullyQualifiedTypeName name="States.GameState"/>
+<fullyQualifiedTypeName name="States.LoseState"/>
+<fullyQualifiedTypeName name="States.OptionState"/>
+<fullyQualifiedTypeName name="Launch.Game"/>
+<fullyQualifiedTypeName name="java.awt.Color"/>
+<fullyQualifiedTypeName name="java.lang.Thread.State"/>
+<fullyQualifiedTypeName name="States.States"/>
+<fullyQualifiedTypeName name="Entities.GameObject"/>
+<fullyQualifiedTypeName name="java.awt.Graphics"/>
+</qualifiedTypeNameHistroy>

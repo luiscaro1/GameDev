@@ -1,0 +1,18 @@
+package Entities;
+
+public abstract class GameObject {
+	private float x, y, velX, velY;
+	private ObjectId id;
+
+	public GameObject(float x, float y, ObjectId id) {
+		this.x = x;
+		this.y = y;
+		this.id = id;
+
+	}
+
+	public abstract void tick();
+
+	public abstract void render(Graphics g);
+
+}

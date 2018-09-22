@@ -1,0 +1,11 @@
+package States;
+
+public class StateManager {
+
+	private static State currentState = null;
+
+	public static void setState(State state) {
+
+	}
+
+}

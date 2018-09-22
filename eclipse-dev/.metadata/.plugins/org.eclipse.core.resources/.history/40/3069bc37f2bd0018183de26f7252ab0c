@@ -1,0 +1,122 @@
+package Launch;
+
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
+import java.lang.Thread.State;
+
+public class Game extends Canvas implements Runnable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Thread thread;
+	private boolean isRunning = false;
+	private State menuState;
+	private State gameState;
+	private State loseSate;
+	private State pauseState;
+	private State optionState;
+
+	public Game() {
+		//makes a new window
+		new Window(800, 600, "Naked Gut", this);
+		// start the game thread
+		this.start();
+
+	}
+
+	public synchronized void start() {
+
+		if (this.isRunning)
+			return;
+
+		this.isRunning = true;
+		thread = new Thread(this);
+		this.thread.start();
+
+	}
+
+	public synchronized void stop() {
+		if (!isRunning)
+			return;
+
+		this.isRunning = false;
+		try {
+			this.thread.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public void run() {
+
+		int fps = 60;
+		double timePerTick = 1000000000 / fps;
+		double delta = 0;
+		long now;
+		long lastTime = System.nanoTime();
+		long timer = 0;
+		int ticks = 0;
+
+		while (this.isRunning) {
+			// makes sure the games runs smoothly at 60 FPS
+			now = System.nanoTime();
+			delta += (now - lastTime) / timePerTick;
+			timer += now - lastTime;
+			lastTime = now;
+
+			if (delta >= 1) {
+				// re-renders and ticks the game around 60 times per second
+				tick();
+				render();
+				ticks++;
+				delta--;
+			}
+
+			if (timer >= 1000000000) {
+				System.out.println(ticks);
+				ticks = 0;
+				timer = 0;
+			}
+		}
+
+		stop();
+
+	}
+
+	public void render() {
+		BufferStrategy bs = this.getBufferStrategy();
+		if (bs == null) {
+			this.createBufferStrategy(3);
+			return;
+		}
+
+		Graphics g = bs.getDrawGraphics();
+		// draw here
+		g.clearRect(0, 0, this.getWidth(), this.getHeight());
+
+		g.setColor(Color.GRAY);
+		g.fillRect(0, 0, this.getWidth(), this.getHeight());
+
+		// end here
+		g.dispose();
+		bs.show();
+
+	}
+
+	public void tick() {
+
+	}
+
+	public static void main(String[] args) {
+		new Game();
+
+	}
+
+}

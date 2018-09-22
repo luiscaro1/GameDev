@@ -1,0 +1,28 @@
+package Entities;
+
+import java.awt.Graphics;
+
+public abstract class GameObject {
+	private float x, y, velX, velY;
+	private ObjectId id;
+
+	public GameObject(float x, float y, ObjectId id) {
+		this.x = x;
+		this.y = y;
+		this.id = id;
+
+	}
+
+	public abstract void tick();
+
+	public abstract void render(Graphics g);
+
+	public abstract Rectangle getBounds();
+
+	public abstract Rectangle getBoundsRight();
+
+	public abstract Rectangle getBoundsLeft();
+
+	public abstract Rectangle getBoundsTop();
+
+}

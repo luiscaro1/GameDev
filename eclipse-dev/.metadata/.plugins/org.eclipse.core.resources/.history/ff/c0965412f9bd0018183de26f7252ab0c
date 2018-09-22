@@ -1,0 +1,10 @@
+package Entities;
+
+public abstract class GameObject {
+	private float x, y, velX, velY;
+
+	public GameObject() {
+
+	}
+
+}

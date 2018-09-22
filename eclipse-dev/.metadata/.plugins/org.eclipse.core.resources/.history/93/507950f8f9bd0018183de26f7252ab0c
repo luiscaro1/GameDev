@@ -1,0 +1,11 @@
+package Launch;
+
+import java.util.LinkedList;
+
+import Entities.GameObject;
+
+public class Handler {
+	public LinkedList<GameObject> object = new LinkedList<GameObject>();
+	
+
+}
