@@ -2,7 +2,7 @@ package States;
 
 import java.awt.Graphics;
 
-public class LoseState extends States {
+public class LoseState extends State {
 
 	@Override
 	public void tick() {

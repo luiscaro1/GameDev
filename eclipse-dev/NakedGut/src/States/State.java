@@ -2,16 +2,16 @@ package States;
 
 import java.awt.Graphics;
 
-public abstract class States {
+public abstract class State {
 
-	private static States currentState = null;
+	private static State currentState = null;
 
-	public static void setState(States state) {
+	public static void setState(State state) {
 		currentState = state;
 
 	}
 
-	public static States getState() {
+	public static State getState() {
 		return currentState;
 
 	}

@@ -2,7 +2,7 @@ package States;
 
 import java.awt.Graphics;
 
-public class PauseState extends States {
+public class PauseState extends State {
 
 	@Override
 	public void tick() {

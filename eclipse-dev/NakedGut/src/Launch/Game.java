@@ -9,7 +9,7 @@ import States.LoseState;
 import States.MenuState;
 import States.OptionState;
 import States.PauseState;
-import States.States;
+import States.State;
 
 public class Game extends Canvas implements Runnable {
 
@@ -21,11 +21,11 @@ public class Game extends Canvas implements Runnable {
 	private Thread thread;
 	private boolean isRunning = false;
 	public static int WIDTH, HEIGHT;
-	private States menuState;
-	private States gameState;
-	private States loseState;
-	private States pauseState;
-	private States optionState;
+	private State menuState;
+	private State gameState;
+	private State loseState;
+	private State pauseState;
+	private State optionState;
 
 	public Game() {
 		// makes a new window
@@ -51,7 +51,7 @@ public class Game extends Canvas implements Runnable {
 		pauseState = new PauseState();
 		optionState = new OptionState();
 		// makes the menu state the beginning state of the loop
-		States.setState(menuState);
+		State.setState(menuState);
 
 	}
 
@@ -133,7 +133,7 @@ public class Game extends Canvas implements Runnable {
 		g.clearRect(0, 0, this.getWidth(), this.getHeight());
 
 		// renders the current state at 60 frames second
-		States.getState().render(g);
+		State.getState().render(g);
 		// end here
 
 		// makes sure the render stops properly

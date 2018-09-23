@@ -5,7 +5,7 @@ import java.awt.Graphics;
 
 import Launch.Game;
 
-public class MenuState extends States {
+public class MenuState extends State {
 
 	@Override
 	public void tick() {
