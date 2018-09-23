@@ -4,6 +4,7 @@ import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
+import Resources.Texture;
 import States.GameState;
 import States.LoseState;
 import States.MenuState;
@@ -26,6 +27,7 @@ public class Game extends Canvas implements Runnable {
 	private State loseState;
 	private State pauseState;
 	private State optionState;
+	public static Texture tex;
 
 	public Game() {
 		// makes a new window
@@ -36,20 +38,20 @@ public class Game extends Canvas implements Runnable {
 		WIDTH = this.getWidth();
 		HEIGHT = this.getHeight();
 
+		tex = new Texture();
+
 		// start the game thread
 		this.start();
+
 		// initializes the different states
-		initStates();
-
-	}
-
-	public void initStates() {
 		// creates new instances of each state
 		menuState = new MenuState();
 		gameState = new GameState();
 		loseState = new LoseState();
 		pauseState = new PauseState();
 		optionState = new OptionState();
+		tex = new Texture();
+
 		// makes the menu state the beginning state of the loop
 		State.setState(menuState);
 
@@ -145,6 +147,10 @@ public class Game extends Canvas implements Runnable {
 
 	public void tick() {
 
+	}
+
+	public static Texture getTex() {
+		return tex;
 	}
 
 	public static void main(String[] args) {

@@ -1,9 +1,13 @@
 package Levels;
 
-import java.awt.Color;
 import java.awt.Graphics;
 
+import Launch.Game;
+import Resources.Texture;
+
 public class Level1 extends Level {
+
+	private Texture tex = Game.getTex();
 
 	public void tick() {
 
@@ -11,8 +15,7 @@ public class Level1 extends Level {
 
 	public void render(Graphics g) {
 
-		g.setColor(Color.blue);
-		g.fillRect(0, 0, 45, 45);
+		g.drawImage(tex.startButton, 0, 0, null);
 
 	}
 
