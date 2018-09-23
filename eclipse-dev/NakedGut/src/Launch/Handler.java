@@ -20,7 +20,7 @@ public class Handler {
 		}
 
 	}
-
+	// goes through the the game objects and draws their render methods
 	public void render(Graphics g) {
 
 		for (int i = 0; i < object.size(); i++) {
@@ -30,10 +30,14 @@ public class Handler {
 		}
 
 	}
+	
+	//adds objects to the game
 
 	public void addObject(GameObject object) {
 		this.object.add(object);
 	}
+	
+	//removes objects from the game
 
 	public void removeObject(GameObject object) {
 		this.object.remove(object);
