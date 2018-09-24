@@ -168,6 +168,10 @@ public class Game extends Canvas implements Runnable {
 
 	}
 
+	public void reStart() {
+		gameState = new GameState(handler);
+	}
+
 	// makes tex accessible to other classes
 	public static Texture getTex() {
 		return tex;
