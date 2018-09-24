@@ -1,49 +1,49 @@
-package Entities;
+package EntitiesManagers;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.LinkedList;
 
 public abstract class GameObject {
-	private float x, y, velX, velY;
+	private int x, y, velX, velY;
 	private ObjectId id;
 
-	public GameObject(float x, float y, ObjectId id) {
+	public GameObject(int x, int y, ObjectId id) {
 		this.x = x;
 		this.y = y;
 		this.id = id;
 
 	}
 
-	public float getX() {
+	public int getX() {
 		return x;
 	}
 
-	public void setX(float x) {
+	public void setX(int x) {
 		this.x = x;
 	}
 
-	public float getY() {
+	public int getY() {
 		return y;
 	}
 
-	public void setY(float y) {
+	public void setY(int y) {
 		this.y = y;
 	}
 
-	public float getVelX() {
+	public int getVelX() {
 		return velX;
 	}
 
-	public void setVelX(float velX) {
+	public void setVelX(int velX) {
 		this.velX = velX;
 	}
 
-	public float getVelY() {
+	public int getVelY() {
 		return velY;
 	}
 
-	public void setVelY(float velY) {
+	public void setVelY(int velY) {
 		this.velY = velY;
 	}
 

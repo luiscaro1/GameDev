@@ -1,4 +1,4 @@
-package Entities;
+package EntitiesManagers;
 
 import java.awt.Graphics;
 import java.util.LinkedList;
