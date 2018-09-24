@@ -16,6 +16,7 @@ public class BufferedImageLoader {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		return image;
 	}
 

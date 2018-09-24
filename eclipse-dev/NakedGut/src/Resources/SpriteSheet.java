@@ -11,10 +11,7 @@ public class SpriteSheet {
 	}
 
 	public BufferedImage grabImage(int column, int row, int width, int height) {
-
 		BufferedImage img = image.getSubimage(column * width - width, row * height - height, width, height);
 		return img;
-
 	}
-
 }

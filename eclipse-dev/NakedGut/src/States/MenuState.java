@@ -1,22 +1,48 @@
 package States;
 
-import java.awt.Color;
 import java.awt.Graphics;
 
 import Launch.Game;
+import Launch.Handler;
+import Resources.Texture;
+import UI.ClickListener;
+import UI.UIImageButton;
+import UI.UIManager;
 
 public class MenuState extends State {
 
-	@Override
-	public void tick() {
-		// TODO Auto-generated method stub
+	private Handler handler;
+	private UIManager uiManager;
+	private Texture tex = Game.getTex();
+
+	public MenuState(Handler handler) {
+		super(handler);
+		this.handler = handler;
+		uiManager = new UIManager(handler);
+		handler.getMouseManager().setUimanager(uiManager);
+
+		uiManager.addObjects(new UIImageButton(50, 50, 64, 32, tex.player, new ClickListener() {
+			@Override
+			public void onClick() {
+				handler.getMouseManager().setUimanager(null);
+
+				State.setState(handler.getGame().gameState);
+			}
+		}));
 
 	}
 
-	@Override
+	public void tick() {
+
+		handler.getMouseManager().setUimanager(uiManager);
+
+		uiManager.tick();
+
+	}
+
 	public void render(Graphics g) {
-		g.setColor(Color.RED);
-		g.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
+
+		uiManager.Render(g);
 
 	}
 

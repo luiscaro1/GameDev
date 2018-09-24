@@ -3,7 +3,12 @@ package Launch;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+
+import Input.MouseManager;
 import Resources.Texture;
 import States.GameState;
 import States.LoseState;
@@ -22,12 +27,14 @@ public class Game extends Canvas implements Runnable {
 	private Thread thread;
 	private boolean isRunning = false;
 	public static int WIDTH, HEIGHT;
-	private State menuState;
-	private State gameState;
-	private State loseState;
-	private State pauseState;
-	private State optionState;
+	public State menuState;
+	public State gameState;
+	public State loseState;
+	public State pauseState;
+	public State optionState;
 	public static Texture tex;
+	private Handler handler;
+	private MouseManager mouseManager;
 
 	public Game() {
 		// makes a new window
@@ -38,28 +45,34 @@ public class Game extends Canvas implements Runnable {
 		WIDTH = this.getWidth();
 		HEIGHT = this.getHeight();
 
+		// loads Images in the game before any state is set as the current state
 		tex = new Texture();
-
 		// start the game thread
 		this.start();
-
-		// initializes the different states
-		// creates new instances of each state
-		menuState = new MenuState();
-		gameState = new GameState();
-		loseState = new LoseState();
-		pauseState = new PauseState();
-		optionState = new OptionState();
-		tex = new Texture();
+		handler = new Handler(this);
+		// adds Mouse Input to the game
+		mouseManager = new MouseManager();
+		// mouse clicks
+		this.addMouseListener(mouseManager);
+		// cursor movement
+		this.addMouseMotionListener(mouseManager);
 
 		// makes the menu state the beginning state of the loop
+		// initializes the different states
+		// creates new instances of each state
+		menuState = new MenuState(handler);
+		gameState = new GameState(handler);
+		loseState = new LoseState(handler);
+		pauseState = new PauseState(handler);
+		optionState = new OptionState(handler);
+
 		State.setState(menuState);
 
 	}
 
 	public synchronized void start() {
 
-//makes sure there isnt a thread already running
+//makes sure there isn't a thread already running
 		if (this.isRunning)
 			return;
 //makes a new thread 
@@ -85,6 +98,7 @@ public class Game extends Canvas implements Runnable {
 
 	}
 
+// the main loop of the game , which optimizes for 60 fps
 	public void run() {
 
 		int fps = 60;
@@ -135,6 +149,7 @@ public class Game extends Canvas implements Runnable {
 		g.clearRect(0, 0, this.getWidth(), this.getHeight());
 
 		// renders the current state at 60 frames second
+
 		State.getState().render(g);
 		// end here
 
@@ -145,12 +160,27 @@ public class Game extends Canvas implements Runnable {
 
 	}
 
+	// updates all the values in the game from every state
+
 	public void tick() {
+
+		State.getState().tick();
 
 	}
 
+	// makes tex accessible to other classes
 	public static Texture getTex() {
 		return tex;
+	}
+
+	// starts a new game
+
+	public MouseManager getMouseManager() {
+		return mouseManager;
+	}
+
+	public void setMouseManager(MouseManager mouseManager) {
+		this.mouseManager = mouseManager;
 	}
 
 	public static void main(String[] args) {
