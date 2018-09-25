@@ -1,17 +1,26 @@
-package EntitiesManagers;
+package Entities;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.LinkedList;
 
-public abstract class GameObject {
-	private int x, y, velX, velY;
-	private ObjectId id;
+import Launch.Handler;
+import Levels.LevelManager;
 
-	public GameObject(int x, int y, ObjectId id) {
+public abstract class GameObject {
+	protected int x, y;
+	protected int velX;
+	protected int velY;
+	protected ObjectId id;
+	protected LevelManager levelManager;
+	protected Handler handler;
+
+	public GameObject(int x, int y, ObjectId id, LevelManager levelManager, Handler handler) {
 		this.x = x;
 		this.y = y;
 		this.id = id;
+		this.levelManager = levelManager;
+		this.handler = handler;
 
 	}
 
@@ -53,6 +62,14 @@ public abstract class GameObject {
 
 	public void setId(ObjectId id) {
 		this.id = id;
+	}
+
+	public LevelManager getLevelManager() {
+		return levelManager;
+	}
+
+	public void setLevelManager(LevelManager levelManager) {
+		this.levelManager = levelManager;
 	}
 
 	public abstract void tick(LinkedList<GameObject> object);

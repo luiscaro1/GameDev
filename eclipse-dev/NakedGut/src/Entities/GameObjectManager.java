@@ -1,4 +1,4 @@
-package EntitiesManagers;
+package Entities;
 
 import java.awt.Graphics;
 import java.util.LinkedList;
@@ -18,6 +18,7 @@ public class GameObjectManager {
 		}
 
 	}
+
 	// goes through the the game objects and draws their render methods
 	public void render(Graphics g) {
 
@@ -28,14 +29,14 @@ public class GameObjectManager {
 		}
 
 	}
-	
-	//adds objects to the game
+
+	// adds objects to the game
 
 	public void addObject(GameObject object) {
 		this.object.add(object);
 	}
-	
-	//removes objects from the game
+
+	// removes objects from the game
 
 	public void removeObject(GameObject object) {
 		this.object.remove(object);

@@ -5,22 +5,36 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.LinkedList;
 
-import EntitiesManagers.GameObject;
-import EntitiesManagers.ObjectId;
+import Launch.Game;
+import Launch.Handler;
+import Levels.LevelManager;
+import States.State;
 
 public class Player extends GameObject {
-	private int x, y;
+	// gives the player access to change levels
+	private LevelManager levelManager;
+	// gives the player access to change States
+	private Handler handler;
 
-	public Player(int x, int y, ObjectId id) {
-		super(x, y, id);
-		this.x = x;
-		this.y = y;
+	public Player(int x, int y, ObjectId id, LevelManager levelManager, Handler handler) {
+		super(x, y, id, levelManager, handler);
+
+		this.handler = handler;
+
+		this.levelManager = levelManager;
+
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void tick(LinkedList<GameObject> object) {
 		// TODO Auto-generated method stub
+		x += velX;
+
+		velX = 1;
+
+		if (this.getX() >= Game.WIDTH)
+			State.setState(handler.getGame().menuState);
 
 	}
 

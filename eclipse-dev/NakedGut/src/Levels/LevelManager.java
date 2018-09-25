@@ -3,6 +3,8 @@ package Levels;
 import States.GameState;
 
 public class LevelManager {
+	
+	//changes the levels in the game state
 
 	private GameState gameState;
 
