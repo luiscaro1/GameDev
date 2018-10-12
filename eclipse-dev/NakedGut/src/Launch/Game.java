@@ -8,6 +8,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import Input.KeyInput;
 import Input.MouseManager;
 import Resources.Texture;
 import States.GameState;
@@ -35,6 +36,7 @@ public class Game extends Canvas implements Runnable {
 	public static Texture tex;
 	private Handler handler;
 	private MouseManager mouseManager;
+	private KeyInput keyInput;
 
 	public Game() {
 		// makes a new window
@@ -50,8 +52,17 @@ public class Game extends Canvas implements Runnable {
 		// start the game thread
 		this.start();
 		handler = new Handler(this);
+
+		// adds keyInput to the game
+
+		keyInput = new KeyInput(handler);
+
 		// adds Mouse Input to the game
 		mouseManager = new MouseManager();
+
+		// key clicks
+
+		this.addKeyListener(keyInput);
 		// mouse clicks
 		this.addMouseListener(mouseManager);
 		// cursor movement

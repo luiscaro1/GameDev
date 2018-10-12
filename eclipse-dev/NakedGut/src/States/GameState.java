@@ -25,6 +25,9 @@ public class GameState extends State {
 
 		// creates a gameObject handler
 		gom = new GameObjectManager();
+		// makes the gom accesible to other classes
+
+		handler.setGom(gom);
 		// calls the method the creates the levels
 		this.createLevels();
 

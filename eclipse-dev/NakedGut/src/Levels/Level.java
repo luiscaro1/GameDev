@@ -14,8 +14,10 @@ public abstract class Level {
 
 	public Level(LevelManager levelManager, GameObjectManager gom, Handler handler) {
 		this.levelManager = levelManager;
-		this.gom = gom;
+
 		this.handler = handler;
+
+		this.gom = gom;
 
 	}
 
