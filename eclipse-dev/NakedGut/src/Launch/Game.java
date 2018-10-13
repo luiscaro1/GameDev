@@ -45,6 +45,7 @@ public class Game extends Canvas implements Runnable {
 		// assigns the width and height of the window to a static variable for access in
 		// other classes
 		WIDTH = this.getWidth();
+
 		HEIGHT = this.getHeight();
 
 		// loads Images in the game before any state is set as the current state
@@ -63,6 +64,7 @@ public class Game extends Canvas implements Runnable {
 		// key clicks
 
 		this.addKeyListener(keyInput);
+		handler.setKeyInput(keyInput);
 		// mouse clicks
 		this.addMouseListener(mouseManager);
 		// cursor movement

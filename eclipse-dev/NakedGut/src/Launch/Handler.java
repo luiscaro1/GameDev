@@ -3,11 +3,13 @@ package Launch;
 import java.awt.Graphics;
 
 import Entities.GameObjectManager;
+import Input.KeyInput;
 import Input.MouseManager;
 
 public class Handler {
 	private Game game;
 	private GameObjectManager gom;
+	private KeyInput keyInput;
 
 // constructor for the class and takes an instance of the game which will come very handy
 	public Handler(Game game) {
@@ -38,6 +40,14 @@ public class Handler {
 
 	public void setGom(GameObjectManager gom) {
 		this.gom = gom;
+	}
+
+	public KeyInput getKeyManager() {
+		return keyInput;
+	}
+
+	public void setKeyInput(KeyInput keyInput) {
+		this.keyInput = keyInput;
 	}
 
 	public void tick() {

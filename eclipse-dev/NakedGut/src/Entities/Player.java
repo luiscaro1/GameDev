@@ -3,6 +3,7 @@ package Entities;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 
 import Launch.Game;
@@ -16,32 +17,39 @@ public class Player extends GameObject {
 	// gives the player access to change States
 	private Handler handler;
 
-	public Player(int x, int y, ObjectId id, LevelManager levelManager, Handler handler) {
+	public Player(float x, float y, ObjectId id, LevelManager levelManager, Handler handler) {
 		super(x, y, id, levelManager, handler);
 
 		this.handler = handler;
 
 		this.levelManager = levelManager;
+		width = 32;
+		height = 32;
 
-		// TODO Auto-generated constructor stub
+		falling = true;
+		velX = 5;
+
 	}
 
 	@Override
 	public void tick(LinkedList<GameObject> object) {
-		// TODO Auto-generated method stub
-		x += velX;
 
-		velX = 1;
+		if (y >= Game.HEIGHT - width) {
 
-		if (this.getX() >= Game.WIDTH)
-			State.setState(handler.getGame().menuState);
+			falling = false;
+		} else {
+			falling = true;
+
+		}
+
+		Move();
 
 	}
 
 	@Override
 	public void render(Graphics g) {
 		g.setColor(Color.ORANGE);
-		g.fillRect(x, y, 32, 32);
+		g.fillRect((int) x, (int) y, width, height);
 		// TODO Auto-generated method stub
 
 	}
