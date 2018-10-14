@@ -3,11 +3,14 @@ package Resources;
 import java.awt.image.BufferedImage;
 
 public class Texture {
-	SpriteSheet ss;
+	private SpriteSheet startBut;
+	private SpriteSheet playerSprite;
 
 	private BufferedImage Start_Sheet = null;
+	private BufferedImage Player_Sheet = null;
 
-	public BufferedImage[] player = new BufferedImage[3];
+	public static BufferedImage[] start = new BufferedImage[3];
+	public static BufferedImage[] player = new BufferedImage[20];
 
 	public Texture() {
 
@@ -15,12 +18,14 @@ public class Texture {
 		try {
 
 			Start_Sheet = loader.loadImage("/start.png");
+			Player_Sheet = loader.loadImage("/playerMovement.png");
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		ss = new SpriteSheet(Start_Sheet);
+		startBut = new SpriteSheet(Start_Sheet);
+		playerSprite = new SpriteSheet(Player_Sheet);
 
 		getTextures();
 
@@ -28,8 +33,9 @@ public class Texture {
 
 	private void getTextures() {
 
-		player[0] = ss.grabImage(1, 1, 64, 32);
-
+		start[0] = startBut.grabImage(1, 1, 64, 32);
+		////////////////////////////////////////////
+		player[0] = playerSprite.grabImage(1, 1, 64, 64);
 	}
 
 }

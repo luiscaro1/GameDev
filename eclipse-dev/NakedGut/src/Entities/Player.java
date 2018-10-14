@@ -2,20 +2,21 @@ package Entities;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
-import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 
 import Launch.Game;
 import Launch.Handler;
 import Levels.LevelManager;
-import States.State;
+import Resources.Texture;
 
 public class Player extends GameObject {
 	// gives the player access to change levels
 	private LevelManager levelManager;
 	// gives the player access to change States
 	private Handler handler;
+	private Texture tex = Game.getTex();
 
 	public Player(float x, float y, ObjectId id, LevelManager levelManager, Handler handler) {
 		super(x, y, id, levelManager, handler);
@@ -23,10 +24,10 @@ public class Player extends GameObject {
 		this.handler = handler;
 
 		this.levelManager = levelManager;
-		width = 32;
-		height = 32;
+//		falling = true;
+		width = 64;
+		height = 64;
 
-		falling = true;
 		velX = 5;
 
 	}
@@ -34,30 +35,26 @@ public class Player extends GameObject {
 	@Override
 	public void tick(LinkedList<GameObject> object) {
 
-		if (y >= Game.HEIGHT - width) {
-
-			falling = false;
-		} else {
-			falling = true;
-
-		}
-
 		Move();
 
 	}
 
 	@Override
 	public void render(Graphics g) {
-		g.setColor(Color.ORANGE);
-		g.fillRect((int) x, (int) y, width, height);
-		// TODO Auto-generated method stub
+
+		g.drawImage(tex.player[0], (int) x - 64, (int) y, 160, 160, null);
+
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.setColor(Color.ORANGE);
+
+		g2d.draw(getBounds());
 
 	}
 
 	@Override
 	public Rectangle getBounds() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Rectangle((int) x, (int) y, 32, 64);
+
 	}
 
 	@Override
